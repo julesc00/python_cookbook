@@ -1,6 +1,13 @@
 """
 you want to make a list of the largest or smallest N items in a collection.
 heapq: has nlargest() or nsmallest()
+
+If you are simply trying to find the single smallest
+or largest item (N=1), it is faster to use min() and max().
+
+Similarly, if N is about the
+same size as the collection itself, it is usually faster to sort it first and take a slice (i.e.,
+use sorted(items)[:N] or sorted(items)[-N:]).
 """
 
 import heapq
@@ -14,6 +21,10 @@ print(heapq.nsmallest(3, nums))  # Prints [-4, 1, 2]
 heap = list(nums)
 heapq.heapify(heap)
 print(heap)
+print(heapq.heappop(heap))  # -4; it pops the first item from the list.
+print(heap)
+print(heapq.heappop(heap))
+print(heap)
 
 portfolio = [
     {'name': 'IBM', 'shares': 100, 'price': 91.1},
@@ -26,3 +37,8 @@ portfolio = [
 
 cheap = heapq.nsmallest(3, portfolio, key=lambda s: s["price"])
 pp.pprint(cheap)
+
+# Print the smallest N
+lst2 = [22, 35, 53, 3, 9, 40, 2]
+smallest = sorted(lst2)[:1]
+print("smallest: ", smallest)
