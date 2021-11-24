@@ -1,6 +1,6 @@
 """
 Problem:
-    You want to perform various calculations (eg. minumum value, max value, sorting, etc.
+    You want to perform various calculations (eg. minimum value, max value, sorting, etc.
 
 Solution:
     Consider a dictionary that maps stock names to prices:

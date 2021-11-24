@@ -21,10 +21,10 @@ print(heapq.nsmallest(3, nums))  # Prints [-4, 1, 2]
 heap = list(nums)
 heapq.heapify(heap)
 print(heap)
-print(heapq.heappop(heap))  # -4; it pops the first item from the list.
-print(heap)
-print(heapq.heappop(heap))
-print(heap)
+# print(heapq.heappop(heap))  # -4; it pops the first item from the list.
+# print(heap)
+# print(heapq.heappop(heap))
+# print(heap)
 
 portfolio = [
     {'name': 'IBM', 'shares': 100, 'price': 91.1},
