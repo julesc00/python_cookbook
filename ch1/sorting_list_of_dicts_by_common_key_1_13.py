@@ -21,10 +21,20 @@ ROWS = [
 
 
 rows_by_fname = sorted(ROWS, key=itemgetter("fname"))
+rows_by_fname2 = sorted(ROWS, key=lambda r: r["fname"])  # Same as above, but itemgetter() works faster
+
 rows_by_uid = sorted(ROWS, key=itemgetter("uid"))
+rows_by_uid2 = sorted(ROWS, key=lambda r: r["uid"])  # Same as above
+
 pp.pprint(rows_by_fname)
 pp.pprint(rows_by_uid)
 
 # The itemgetter() function can also accept multiple keys
 rows_by_lfname = sorted(ROWS, key=itemgetter("lname", "fname"))
 pp.pprint(rows_by_lfname)
+
+# with min() and max()
+smallest_id = min(ROWS, key=itemgetter("uid"))
+print(smallest_id)
+highest_id = max(ROWS, key=itemgetter("uid"))
+print(highest_id)
