@@ -52,4 +52,3 @@ print(url[:5] == "http:" or url[:6] == "https:" or url[:4] == "ftp:")  # True
 
 # Using regex as an alternative
 print(re.match("http:|https:|ftp:", url))  # <re.Match object; span=(0, 5), match='http:'>
-
