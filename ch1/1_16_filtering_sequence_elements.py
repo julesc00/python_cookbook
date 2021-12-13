@@ -1,6 +1,7 @@
 """
+1.16
 Problem
-    You have data inside of a sequence, and need to extract values or reduce the
+    You have data inside a sequence, and need to extract values or reduce the
     sequence using some criteria.
 
 Solution
