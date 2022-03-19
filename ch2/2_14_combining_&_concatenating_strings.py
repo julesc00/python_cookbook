@@ -35,6 +35,7 @@ print(a, b, c, sep=":")  # Better
 If you're writing code that is building output from lots of small strings, you
 might consider writing that code as a generator function, using yield to emit fragments.
 """
+FRAG = ["hola", "como", "has", "estado", "ultimamente"]
 
 
 def sample() -> str:
@@ -46,3 +47,12 @@ def sample() -> str:
 
 text = " ".join(sample())
 print(text)
+
+
+def sample_2(msg: list) -> str:
+    for i in msg:
+        yield i
+
+
+text2 = " ".join(sample_2(FRAG))
+print(text2.capitalize())
