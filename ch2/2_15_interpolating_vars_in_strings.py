@@ -9,6 +9,7 @@ Solution:
     approximated using the format() method of strings.
 """
 import sys
+import string
 
 
 s = "{name} has {n} messages."
@@ -21,12 +22,17 @@ def welcome_user(msg):
 
 
 """
-Alternatively, if the values to be substituted are truly found in variables, you can use the
-combination of format_map() and vars()
+Alternatively, if the values to be substituted are truly found in variables, you 
+can use the combination of format_map() and vars()
 """
 name = "Jemima"
 n = 23
 print(s.format_map(vars()))
+
+
+#########################
+# format() and format_map() are modern approaches, so they are preferred
+#########################
 
 
 # Another similar example
@@ -51,7 +57,7 @@ One downside of format() and format_map() is that they do not deal gracefully wi
 missing values.
 
 One way to avoid this is to define an alternative dictionary class with a __miss
-ing__() method
+ing__() method; this is nice to use too.
 """
 
 
@@ -75,6 +81,21 @@ def sub(text):
     return text.format_map(Safesub(sys._getframe(1).f_locals))
 
 
+"""
+The lack of true variable interpolation in Python has led to a variety of solutions 
+over the years. As an alternative to the solution presented in this recipe, you 
+will sometimes see string formatting like this:
+"""
+
+name4 = "Caricia"
+n4 = 21
+# print("%(name4) has %(n4) messages." % vars())  # This generates an error.
+
+
+# Using template strings.
+s2 = string.Template("$name4 has $n4 messages.")
+print(s2.substitute(vars()))
+
 if __name__ == "__main__":
     welcome_msg = "Welcome back {user}!"
     print(welcome_user(welcome_msg))
@@ -84,3 +105,10 @@ if __name__ == "__main__":
     n2 = 53
     print(show_n_msgs(name2, n2))
     print(sys.platform)
+
+    name3 = "Charbel"
+    n3 = 2
+    print(sub("Hello {name3}"))
+    print(sub("You have {n3} messages."))
+    print(sub("Your favorite color is {color}."))
+

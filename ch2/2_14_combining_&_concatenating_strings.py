@@ -50,9 +50,28 @@ print(text)
 
 
 def sample_2(msg: list) -> str:
+    """Performant example for string joining further down the line."""
     for i in msg:
         yield i
 
 
 text2 = " ".join(sample_2(FRAG))
 print(text2.capitalize())
+
+
+def combine(source, maxsize):
+    """
+    Or we could come up with some kind of hybrid scheme that’s smart about combining
+    I/O operations.
+
+    The key point is that the original generator function doesn’t have to know the precise
+    details. It just yields the parts.
+    """
+    parts1, size = [], 0
+    for part in source:
+        parts1.append(part)
+        size += len(part)
+        if size > maxsize:
+            yield "".join(parts1)
+            parts1, size = [], 0
+    yield "".join(parts1)
