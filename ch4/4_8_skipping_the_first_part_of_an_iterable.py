@@ -49,5 +49,34 @@ def skip_known_items():
     [print(x) for x in islice(items, 3, None)]
 
 
+def skip_items2():
+    """
+    The dropwhile() and islice() functions are mainly convenience functions that you
+    can use to avoid writing rather messy code such as this:
+    """
+    with open("/etc/passwd") as f:
+        # Skip over initial comments
+        while True:
+            line = next(f, "")
+            if not line.startswith("#"):
+                break
+
+        while line:
+            # Replace with useful processing
+            print(line, end="")
+            line = next(f, None)
+
+
+def skip_items3():
+    """
+    Refactoring the previous code.
+    """
+    with open("/etc/passwd") as f:
+        lines = (line for line in f if not line.startswith("#"))
+        [print(line, end="") for line in lines]
+
+
 if __name__ == "__main__":
-    skip_known_items()
+    # skip_known_items()
+    # skip_items2()
+    skip_items3()
